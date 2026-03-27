@@ -2,10 +2,12 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 public class Main{
     public static void main(String[] args)
         throws IOException
     {
+      System.out.println("Main is now running");
         // Enter data using BufferReader
         BufferedReader reader = new BufferedReader(
             new InputStreamReader(System.in));
@@ -17,7 +19,7 @@ public class Main{
         {
           if(input.length()>3 && input.substring(0, 3).equals("add"))
           {
-            System.out.println(list.addAValue(input.substring(4)).getValue());
+            System.out.println("Added: " + list.addAValue(input.substring(4)).getValue());
           }
           else if(input.equals("show"))
           {
@@ -27,8 +29,18 @@ public class Main{
               System.out.println("removing "+input.substring(7));
               System.out.println(list.deleteAValue(input.substring(7)).getValue());
           }
+          else if(input.equals("reverse")){
+              System.out.println("Reversing the list!");
+              list.reverse();
+          }
+          else if (input.length()>7 && input.substring(0,7).equals("reverse")) 
+          {
+            System.out.println("Reversing the list in groups of " + Integer.parseInt(input.substring(8)) + "!");
+            list.nReverse(Integer.parseInt(input.substring(8)));
+          }
           else if(input.equals("clear"))
           {
+            System.out.println("List was cleared!");
             list.clear();
           }
           else if(!input.equals("exit")){
